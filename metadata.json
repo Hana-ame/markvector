@@ -1,0 +1,6 @@
+{
+  "name": "MarkVector — Markdown 转 SVG 排版渲染器",
+  "description": "专业的 Markdown 转纯矢量 SVG 单页工具，支持代码块语法高亮渲染与自定义加粗/斜体色彩映射。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
