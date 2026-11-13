@@ -21,6 +21,8 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: pnpm/action-setup@v4
+        # Version comes from `packageManager` in package.json so local and CI
+        # cannot drift. `allowBuilds` semantics are pnpm-12-specific.
 
       - uses: actions/setup-node@v4
         with:
@@ -29,7 +31,7 @@ jobs:
 
       # pnpm 12 refuses to run dependency postinstall scripts unless they are
       # allowlisted in pnpm-workspace.yaml (`allowBuilds`). esbuild's binary is
-      # required by Vite, so keep that file in sync with the versions below.
+      # required by Vite, so that file must stay in the repo.
       - run: pnpm install --frozen-lockfile
 
       - run: pnpm run lint
