@@ -3,12 +3,17 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
 
+// Deployed to https://<owner>.github.io/markvector/ (GitHub Pages sub-path),
+// so production asset URLs must be prefixed. Dev (`npm run dev`) stays at root.
+const base = process.env.NODE_ENV === 'production' ? '/markvector/' : '/';
+
 export default defineConfig(() => {
   return {
+    base,
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '.'),
+        '@': path.resolve(import.meta.dirname, '.'),
       },
     },
     server: {
